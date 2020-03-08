@@ -1,0 +1,6 @@
+       int[] result = new int[arr.size()];
+        Integer[] temp = arr.toArray(new Integer[arr.size()]);
+        for (int n = 0; n < arr.size(); ++n) {
+            result[n] = temp[n];
+        }
+        return result;
