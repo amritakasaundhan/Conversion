@@ -1,0 +1,27 @@
+class Solution {
+    public int numIslands(char[][] grid) {
+        if(grid == null || grid.length == 0){
+            return 0;
+        }
+            int numofIslands = 0;
+            for(int i = 0; i < grid.length; i++){
+                for(int j = 0; j < grid[0].length; j++){
+                    if(grid[i][j] == '1'){
+                        numofIslands++;
+                        dfs(grid, i, j);
+                    }
+                }
+            }
+    return numofIslands;
+    }
+    public void dfs(char[][] grid, int start, int end) {
+        if((start < 0) || (end < 0) || (start >= grid.length) || (end >= grid[0].length)||(grid[start][end] == '0') ){
+            return;
+        }
+        grid[start][end] = '0';
+        dfs(grid, start-1, end);
+        dfs(grid, start+1, end);
+        dfs(grid, start, end-1);
+        dfs(grid, start, end+1);
+    }
+}
