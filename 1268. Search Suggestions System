@@ -1,0 +1,22 @@
+class Solution {
+    public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        Arrays.sort(products);
+        List<List<String>> result = new ArrayList<>();
+        StringBuilder sb = new StringBuilder ();
+        for(int i = 0; i < searchWord.length(); i++){
+            sb.append(searchWord.charAt(i));
+            List<String> str = new ArrayList<>();
+            String s = sb.toString();
+            int len = s.length();
+            int string_count = 0;
+            for(String product : products){
+                if(product.length() >= len && product.substring(0, len).equals(s) &&string_count<3 ){
+                    str.add(product);
+                    string_count++;
+                }
+            }
+            result.add(str);
+        }
+      return result;  
+    }
+}
